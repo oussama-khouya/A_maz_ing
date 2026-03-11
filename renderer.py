@@ -27,10 +27,10 @@ WALL_COLORS = [
     "\033[105m",   # Magenta
 ]
 
-ENTRY_COLOR = "\033[42m"
-EXIT_COLOR  = "\033[41m"
-PATH_COLOR  = "\033[43m"
-COLOR_42    = "\033[45m"
+ENTRY_COLOR = "\033[42m" #Green
+EXIT_COLOR  = "\033[41m" #red
+PATH_COLOR  = "\033[43m" #yallow
+COLOR_42    = "\033[45m" #pink
 
 WALL_BLOCK  = "  "
 EMPTY_BLOCK = "  "
@@ -168,7 +168,7 @@ def run(maze_file):
             break
 
         if choice == "1":
-            os.system(f"{sys.executable} gen_example.py")
+            os.system(f"{sys.executable} a_maze_ing.py config.txt --no-display")
             maze = read_maze(maze_file)
             show_path = False
 
