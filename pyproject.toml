@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mazegen"
+version = "1.0.0"
+authors = [
+  { name="charikat_dajaj" },
+]
+description = "Reusable maze generation library (A-Maze-ing project)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "flake8", "mypy"]
+
+[tool.setuptools]
+py-modules = ["a_maze_ing", "maze_generator", "config_parser", "renderer"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_ignores = true
+ignore_missing_imports = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+
+[tool.flake8]
+max-line-length = 99
+exclude = [".git", "__pycache__", "dist", "build"]
