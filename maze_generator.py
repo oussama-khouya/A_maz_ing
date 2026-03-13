@@ -99,15 +99,13 @@ class MazeGenerator:
         self.solutions = []
         self._place_42_pattern()
         self._dfs_carve()
+        # hna
         self._seal_border()
         self._open_endpoints()
         if not self.perfect:
             self._add_loops()
-        if self.perfect:
-            path = self._bfs_solve()
-            self.solutions = [path]
-        else:
-            self.solutions = self._find_all_solutions()
+        path = self._bfs_solve()
+        self.solutions = [path]
 
     def save(self, filepath: str) -> None:
         """save the maze to a file in hex format.
@@ -301,38 +299,3 @@ class MazeGenerator:
             cur = prev
         path.reverse()
         return path
-
-    def _find_all_solutions(self) -> list:
-        """find all paths from entry to exit using DFS.
-
-        Returns:
-            list of paths, each path is a list of direction chars.
-        """
-        ex, ey = self.entry
-        xx, xy = self.exit
-        all_paths: list = []
-        current_path: list = []
-        on_path: set = {(ex, ey)}
-
-        def dfs(cx: int, cy: int) -> None:
-            """recursive DFS to find all paths."""
-            if (cx, cy) == (xx, xy):
-                all_paths.append(list(current_path))
-                return
-            for d, (dx, dy) in DIR_DELTA.items():
-                if self.grid[cy][cx] & d:
-                    continue
-                nx, ny = cx + dx, cy + dy
-                if (
-                    0 <= nx < self.width
-                    and 0 <= ny < self.height
-                    and (nx, ny) not in on_path
-                ):
-                    current_path.append(DIR_CHAR[d])
-                    on_path.add((nx, ny))
-                    dfs(nx, ny)
-                    current_path.pop()
-                    on_path.remove((nx, ny))
-
-        dfs(ex, ey)
-        return all_paths
