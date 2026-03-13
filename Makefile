@@ -1,7 +1,7 @@
 .PHONY: install run debug clean lint lint-strict build
 
 install:
-	pip3.10 install ".[dev]"
+	pip install ".[dev]"
 
 run:
 	python3 a_maze_ing.py config.txt
@@ -25,5 +25,5 @@ lint-strict:
 	mypy . --strict
 
 build:
-	pip3.10 install build
+	pip install build
 	python3 -m build
