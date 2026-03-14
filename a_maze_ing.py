@@ -17,7 +17,7 @@ def main() -> None:
 
     # import config parser and maze generator
     from config_parser import parse_config
-    from maze_generator import MazeGenerator, MazeGenerationError
+    from mazegen.maze_generator import MazeGenerator, MazeGenerationError
 
     # parse the config file
     cfg = parse_config(sys.argv[1])

@@ -13,7 +13,6 @@ __pycache__/
 
 # build artifacts
 build/
-dist/
 *.egg-info/
 
 # virtual environments

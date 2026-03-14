@@ -126,24 +126,6 @@ class MazeGenerator:
             for path in self.solutions:
                 f.write("".join(path) + "\n")
 
-    def cell_walls(self, x: int, y: int) -> dict:
-        """return which walls are present for cell (x, y).
-
-        Args:
-            x: cell x coordinate.
-            y: cell y coordinate.
-
-        Returns:
-            dict with keys N, E, S, W and bool values.
-        """
-        v = self.grid[y][x]
-        return {
-            "N": bool(v & NORTH),
-            "E": bool(v & EAST),
-            "S": bool(v & SOUTH),
-            "W": bool(v & WEST),
-        }
-
     def _check_coord(self, c: tuple, name: str) -> None:
         """check that a coordinate is inside the maze bounds.
 
